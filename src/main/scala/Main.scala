@@ -5,8 +5,6 @@ import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import sttp.client._
 
-// TODO Für jeden Monat muss ein Scraper laufen
-
 object Main extends App {
 
   def scrapeByUrl(url: String): Unit = {
