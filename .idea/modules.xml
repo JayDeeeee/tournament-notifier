@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/tournament-notifier.iml" filepath="$PROJECT_DIR$/.idea/tournament-notifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tournament-notifier.iml" filepath="$PROJECT_DIR$/.idea/modules/tournament-notifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tournament-notifier-build.iml" filepath="$PROJECT_DIR$/.idea/modules/tournament-notifier-build.iml" />
     </modules>
   </component>
 </project>

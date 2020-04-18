@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 227723384,
+      "message": {
+        "message_id": 4,
+        "from": {
+          "id": 780031230,
+          "is_bot": false,
+          "first_name": "Janik",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": 780031230,
+          "first_name": "Janik",
+          "type": "private"
+        },
+        "date": 1584365155,
+        "text": "/HELP",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 5,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 227723385,
+      "message": {
+        "message_id": 5,
+        "from": {
+          "id": 780031230,
+          "is_bot": false,
+          "first_name": "Janik",
+          "username": "janikdotzel",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -426393772,
+          "title": "BTTR-Races",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1584368314,
+        "group_chat_created": true
+      }
+    },
+    {
+      "update_id": 227723386,
+      "message": {
+        "message_id": 6,
+        "from": {
+          "id": 780031230,
+          "is_bot": false,
+          "first_name": "Janik",
+          "username": "janikdotzel",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -426393772,
+          "title": "BTTR-Races",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1584368347,
+        "text": "/start@bttrnotificatorbot",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 25,
+            "type": "bot_command"
+          }
+        ]
+      }
+    }
+  ]
+}
