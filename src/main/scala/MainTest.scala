@@ -3,16 +3,16 @@ import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.dsl.DSL.Extract._
 import sttp.client._
 
-object Main extends App {
+object MainTest extends App {
 
   def scrapeByUrl(url: String): Unit = {
     // Scrape
-    val scraper = new Scraper(url)
+    val scraper = new Scraper2(url)
     val events = scraper.getCurrentEvents()
     val ufrEvents = scraper.filterEvents(events, "Unterfranken", 4)
 
     // Check for changes
-    val monitor = new Monitor(url)
+    val monitor = new Monitor2(url)
     monitor.updateEvents(ufrEvents)
     if (monitor.hasChanged) monitor.notifyTelegram("1086614510:AAGNMEE9gRnHACDDC7L35CnY3E2O700Ao0w", url)
   }
@@ -35,15 +35,15 @@ object Main extends App {
   }
 
   while (true) {
-    for (url <- getUrlList) yield scrapeByUrl(url)
+    scrapeByUrl("testPage.html")
     Thread.sleep(60000)
   }
 }
 
-class Scraper(url: String) {
+class Scraper2(url: String) {
   type WebElements = Vector[Vector[net.ruippeixotog.scalascraper.model.Element]]
   private final val browser = JsoupBrowser()
-  private final val doc = browser.get(url)
+  private final val doc = browser.parseFile(url)
 
   def getCurrentEvents(): WebElements = {
     doc >> extractor("#content-row2 > table.result-set", table)
@@ -55,23 +55,23 @@ class Scraper(url: String) {
   }
 }
 
-object EventStore {
+object EventStore2 {
   type WebElements = Vector[Vector[net.ruippeixotog.scalascraper.model.Element]]
   var eventsOld: WebElements = Vector()
   var eventsNew: WebElements = Vector()
 }
 
-class Monitor(url: String) {
+class Monitor2(url: String) {
   type WebElements = Vector[Vector[net.ruippeixotog.scalascraper.model.Element]]
 
   def updateEvents(events: WebElements): Unit = {
-    EventStore.eventsOld = EventStore.eventsNew
-    val scraper = new Scraper(this.url)
+    EventStore2.eventsOld = EventStore2.eventsNew
+    val scraper = new Scraper2(this.url)
     val allEvents = scraper.getCurrentEvents()
-    EventStore.eventsNew = scraper.filterEvents(allEvents, "Unterfranken", 4)
+    EventStore2.eventsNew = scraper.filterEvents(allEvents, "Unterfranken", 4)
   }
 
-  def hasChanged: Boolean = EventStore.eventsOld.size != EventStore.eventsNew.size
+  def hasChanged: Boolean = EventStore2.eventsOld.size != EventStore2.eventsNew.size
 
   def notifyTelegram(accessToken: String, url: String): Unit = {
     // Create Request
