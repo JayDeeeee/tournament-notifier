@@ -14,7 +14,7 @@ object MainTest extends App {
     // Check for changes
     val monitor = new Monitor2(url)
     monitor.updateEvents(ufrEvents)
-    if (monitor.hasChanged) monitor.notifyTelegram("1086614510:AAGNMEE9gRnHACDDC7L35CnY3E2O700Ao0w", url)
+    if (monitor.hasChanged) monitor.notifyTelegram(${accessToken}, url)
   }
 
   def getUrlList(): List[String] = {
@@ -91,7 +91,7 @@ class Monitor2(url: String) {
   This method is not ready for production.
    */
   def getChatId(): Unit = {
-    val request = basicRequest.get(uri"https://api.telegram.org/bot1086614510:AAGNMEE9gRnHACDDC7L35CnY3E2O700Ao0w/getUpdates")
+    val request = basicRequest.get(uri"https://api.telegram.org/bot${accessToken}/getUpdates")
     implicit val backend = HttpURLConnectionBackend()
     val response = request.send()
 
